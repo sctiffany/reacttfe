@@ -2,7 +2,7 @@
 body {
   margin: 0 auto;
   max-width: 500px;
-  background-color: rgb(233, 233, 233);
+  background-color: rgb(53, 53, 53);
 }
 
 h1 {
@@ -11,7 +11,7 @@ h1 {
 }
 
 .app {
-  background-color: rgb(252, 252, 252);
+  background-color: rgb(235, 235, 235);
   box-shadow: 10px 9px 21px -7px rgba(113, 113, 113, 0.75);
   margin-top: 2em;
   padding: 2em;
@@ -21,6 +21,15 @@ h1 {
 .logo {
   height: 100px;
   width: 100px;
+}
+
+.infos-container {
+  background-color: white;
+  padding: 1em;
+  border-radius: 10px;
+  margin-top: 2em;
+  display: flex;
+  gap: 3em;
 }
 
 .img-container {
@@ -35,12 +44,6 @@ h1 {
   width: 125px;
 }
 
-.infos-container {
-  margin-top: 2em;
-  display: flex;
-  gap: 3em;
-}
-
 .selectFilter {
   padding: 0.5em;
 }
@@ -50,4 +53,5 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 0.5em;
 }
