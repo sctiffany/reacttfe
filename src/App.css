@@ -34,14 +34,15 @@ h1 {
 
 .img-container {
   margin-top: 1em;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
   gap: 1em;
-  justify-content: space-between;
 }
 
 .img-square {
   height: 125px;
   width: 125px;
+  object-fit: cover;
 }
 
 .selectFilter {

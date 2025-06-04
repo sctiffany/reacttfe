@@ -1,13 +1,22 @@
-export function Filter() {
+export function Filter({ setOrder }) {
+  const handleChange = (e) => {
+    setOrder(e.target.value);
+  };
+
   return (
     <div>
-      <select name="filters" id="filters" className="selectFilter">
+      <select
+        name="filters"
+        id="filters"
+        className="selectFilter"
+        onChange={handleChange}
+      >
         Filtres
-        <option value="" disabled>
+        <option value="" disabled selected hidden>
           Filtres
         </option>
-        <option value="">Trier : A - Z</option>
-        <option value="">Trier : Z - A</option>
+        <option value="asc">Trier : 1 - 800</option>
+        <option value="desc">Trier : 800 - 1</option>
       </select>
     </div>
   );

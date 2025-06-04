@@ -1,9 +1,7 @@
-import img1 from "../assets/img1.jpg";
-
-export function ImageSquare() {
+export function ImageSquare({ src }) {
   return (
     <>
-      <img src={img1} alt="" className="img-square" />
+      <img src={src} alt="" className="img-square" />
     </>
   );
 }
