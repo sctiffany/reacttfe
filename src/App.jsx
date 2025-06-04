@@ -1,14 +1,15 @@
 import "./App.css";
-import { useState, useEffect, Profiler } from "react";
+import { useState, useEffect } from "react";
 import { Filter } from "./components/Filter";
 import { ImageSquare } from "./components/ImageSquare";
+import { PerformanceStats } from "./components/PerformanceStats";
 import logoReact from "./assets/logo-react.png";
 
 function App() {
   const totalImages = 800;
   const imagesPerBatch = 50;
 
-  const [order, setOrder] = useState("asc"); // "asc" ou "desc"
+  const [order, setOrder] = useState("asc");
   const [index, setIndex] = useState(1);
 
   const allImages = Array.from({ length: totalImages }, (_, i) => {
@@ -36,7 +37,6 @@ function App() {
   }, [index, order]);
 
   useEffect(() => {
-    // Remettre à 50 images au changement d'ordre
     setIndex(1);
     setVisibleImages(allImages.slice(0, imagesPerBatch));
   }, [order]);
@@ -50,37 +50,9 @@ function App() {
       <div className="infos-container">
         <div className="flex-col-justify-between">
           <img src={logoReact} className="logo" alt="" />
-          <Profiler
-            id="filter"
-            onRender={(
-              id,
-              phase,
-              actualDuration,
-              baseDuration,
-              startTime,
-              commitTime,
-              interactions
-            ) => {
-              console.log(`[${id}] phase: ${phase}`);
-              console.log(
-                `Temps réel de rendu: ${actualDuration.toFixed(2)}ms`
-              );
-              console.log(
-                `Durée sans optimisations: ${baseDuration.toFixed(2)}ms`
-              );
-            }}
-          >
-            <Filter setOrder={setOrder} />
-          </Profiler>
+          <Filter setOrder={setOrder} />
         </div>
-        <div className="flex-col-justify-between">
-          Informations à propos de l'app - React
-          <div>TTFB : </div>
-          <div>LCP : </div>
-          <div>FCP : </div>
-          <div>TBT : </div>
-          <div>TTI : </div>
-        </div>
+        <PerformanceStats />
       </div>
       <div className="img-container">
         {visibleImages.map((src, i) => (

@@ -12,7 +12,7 @@ export function Filter({ setOrder }) {
         onChange={handleChange}
       >
         Filtres
-        <option value="" disabled selected hidden>
+        <option value="" disabled defaultValue hidden>
           Filtres
         </option>
         <option value="asc">Trier : 1 - 800</option>
