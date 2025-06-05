@@ -1,7 +1,9 @@
 export function ImageSquare({ src }) {
   return (
     <>
-      <img src={src} alt="" className="img-square" />
+      <div className="img-wrapper">
+        <img src={src} alt="" className="img-square fade-in" />
+      </div>
     </>
   );
 }
