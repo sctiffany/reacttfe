@@ -49,8 +49,8 @@ function App() {
       </h1>
       <div className="infos-container">
         <div className="flex-col-justify-between">
-          <img src={logoReact} className="logo" alt="" />
-          <Filter setOrder={setOrder} />
+          <img src={logoReact} className="logo" alt="logo" />
+          <Filter setOrder={(value) => setOrder(value)} />
         </div>
         <PerformanceStats />
       </div>
