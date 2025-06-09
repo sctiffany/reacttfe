@@ -7,39 +7,12 @@ import logoReact from "./assets/logo-react.png";
 
 function App() {
   const totalImages = 800;
-  const imagesPerBatch = 50;
-
   const [order, setOrder] = useState("asc");
-  const [index, setIndex] = useState(1);
 
   const allImages = Array.from({ length: totalImages }, (_, i) => {
     const num = order === "asc" ? i + 1 : totalImages - i;
     return `/assets/photo (${num}).jpg`;
   });
-
-  const [visibleImages, setVisibleImages] = useState(
-    allImages.slice(0, imagesPerBatch)
-  );
-
-  const handleScroll = () => {
-    const bottom =
-      window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
-    if (bottom && index * imagesPerBatch < totalImages) {
-      const newIndex = index + 1;
-      setVisibleImages(allImages.slice(0, newIndex * imagesPerBatch));
-      setIndex(newIndex);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [index, order]);
-
-  useEffect(() => {
-    setIndex(1);
-    setVisibleImages(allImages.slice(0, imagesPerBatch));
-  }, [order]);
 
   return (
     <div className="app">
@@ -55,7 +28,7 @@ function App() {
         <PerformanceStats />
       </div>
       <div className="img-container">
-        {visibleImages.map((src, i) => (
+        {allImages.map((src, i) => (
           <ImageSquare key={i} src={src} />
         ))}
       </div>
